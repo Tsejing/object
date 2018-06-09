@@ -87,6 +87,7 @@ def main(unused_argv):
   if FLAGS.pipeline_config_path:
     configs = config_util.get_configs_from_pipeline_file(
         FLAGS.pipeline_config_path)
+    print("333",configs)
     tf.gfile.Copy(FLAGS.pipeline_config_path,
                   os.path.join(FLAGS.eval_dir, 'pipeline.config'),
                   overwrite=True)
