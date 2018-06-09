@@ -83,6 +83,7 @@ def main(unused_argv):
   assert FLAGS.checkpoint_dir, '`checkpoint_dir` is missing.'
   assert FLAGS.eval_dir, '`eval_dir` is missing.'
   tf.gfile.MakeDirs(FLAGS.eval_dir)
+  print("1",FLAGS.pipeline_config_path)
   if FLAGS.pipeline_config_path:
     configs = config_util.get_configs_from_pipeline_file(
         FLAGS.pipeline_config_path)
@@ -117,6 +118,7 @@ def main(unused_argv):
       input_reader_builder.build,
       input_config)
 
+  print("2",input_config.label_map_path)
   label_map = label_map_util.load_labelmap(input_config.label_map_path)
   max_num_classes = max([item.id for item in label_map.item])
   categories = label_map_util.convert_label_map_to_categories(
